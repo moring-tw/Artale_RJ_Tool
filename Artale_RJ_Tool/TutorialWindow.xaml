@@ -1,0 +1,44 @@
+﻿<Window x:Class="WpfFirebaseSync.TutorialWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Firebase 註冊與設定教學" Height="500" Width="450" WindowStartupLocation="CenterOwner">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="15">
+        <StackPanel>
+            <TextBlock Text="如何取得專屬 Firebase 資料庫網址？" FontSize="18" FontWeight="Bold" Margin="0,0,0,15" Foreground="DarkBlue"/>
+
+            <TextBlock FontWeight="Bold" Text="步驟 1：登入 Firebase" FontSize="14"/>
+            <TextBlock TextWrapping="Wrap" Margin="0,5,0,15">
+                <Run Text="請前往 "/>
+                <Hyperlink NavigateUri="https://console.firebase.google.com/" RequestNavigate="Hyperlink_RequestNavigate">
+                    Firebase Console (點擊開啟網頁)
+                </Hyperlink>
+                <Run Text="，並使用你的 Google 帳號登入。"/>
+            </TextBlock>
+
+            <TextBlock FontWeight="Bold" Text="步驟 2：建立新專案" FontSize="14"/>
+            <TextBlock TextWrapping="Wrap" Margin="0,5,0,15" Text="點擊「新增專案 (Add project)」，隨意輸入一個專案名稱，按照步驟完成建立 (可以關閉 Google Analytics 分析功能，用不到)。"/>
+
+            <TextBlock FontWeight="Bold" Text="步驟 3：建立 Realtime Database" FontSize="14"/>
+            <TextBlock TextWrapping="Wrap" Margin="0,5,0,15" Text="進入專案後，在左側選單找到「建構 (Build)」-> 點擊「Realtime Database」-> 點擊畫面上的「建立資料庫」按鈕。位置建議選擇新加坡 (asia-southeast1)，速度較快。"/>
+
+            <TextBlock FontWeight="Bold" Text="步驟 4：設定安全性規則 (非常重要！)" FontSize="14" Foreground="DarkRed"/>
+            <TextBlock TextWrapping="Wrap" Margin="0,5,0,5" Text="進入資料庫後，切換到上方「規則 (Rules)」標籤，將內容修改為以下程式碼，並按下「發布 (Publish)」以允許程式讀寫："/>
+
+            <TextBox IsReadOnly="True" Background="#F4F4F4" FontFamily="Consolas" Margin="0,0,0,15" Padding="10">
+                <TextBox.Text>
+                    {
+  "rules": {
+    ".read": true,
+    ".write": true
+  }
+}
+                </TextBox.Text>
+            </TextBox>
+
+            <TextBlock FontWeight="Bold" Text="步驟 5：複製專屬網址" FontSize="14"/>
+            <TextBlock TextWrapping="Wrap" Margin="0,5,0,20" Text="切換回「資料 (Data)」標籤，在畫面中央上方會有一串網址 (例如 https://your-project...firebasedatabase.app/)。點擊旁邊的複製按鈕，貼回本程式的設定頁面即可開始使用！"/>
+
+            <Button Content="我知道了，關閉教學" Width="150" HorizontalAlignment="Center" Padding="8" Click="Close_Click"/>
+        </StackPanel>
+    </ScrollViewer>
+</Window>

@@ -1,0 +1,39 @@
+﻿<Window x:Class="WpfFirebaseSync.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:WpfFirebaseSync"
+        Title="WPF Firebase 同步程式" Height="250" Width="450"
+        Topmost="{Binding Source={x:Static local:AppConfig.Instance}, Path=IsTopmost}"
+        Opacity="{Binding Source={x:Static local:AppConfig.Instance}, Path=WindowOpacity}">
+
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Button Grid.Row="0" Content="⚙ 設定" HorizontalAlignment="Right" Width="80" Padding="5" Click="OpenSettings_Click"/>
+
+        <!-- 顏色選擇區域 -->
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,10,0,15">
+            <TextBlock Text="選擇畫筆顏色:" VerticalAlignment="Center" Margin="0,0,10,0" FontWeight="Bold"/>
+            <ComboBox Width="150" SelectedValuePath="Tag" 
+                      SelectedValue="{Binding Source={x:Static local:AppConfig.Instance}, Path=SelectedColor}">
+                <ComboBoxItem Content="🟥 紅色 (Red)" Tag="#FF0000"/>
+                <ComboBoxItem Content="🟦 藍色 (Blue)" Tag="#0000FF"/>
+                <ComboBoxItem Content="🟩 綠色 (Green)" Tag="#00FF00"/>
+                <ComboBoxItem Content="🟨 黃色 (Yellow)" Tag="#FFD700"/>
+                <ComboBoxItem Content="🟪 紫色 (Purple)" Tag="#800080"/>
+                <ComboBoxItem Content="⬛ 黑色 (Black)" Tag="#000000"/>
+            </ComboBox>
+        </StackPanel>
+
+        <!-- GUID 輸入與連接 -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,0,0,10">
+            <TextBlock Text="房間 GUID:" VerticalAlignment="Center" Margin="0,0,10,0" FontWeight="Bold"/>
+            <TextBox x:Name="GuidTextBox" Width="200" Padding="2" VerticalAlignment="Center"/>
+            <Button Content="開啟網格視窗" Width="100" Margin="10,0,0,0" Click="OpenGrid_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
